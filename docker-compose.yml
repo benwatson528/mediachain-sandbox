@@ -1,0 +1,21 @@
+version: '3'
+services:
+  mcnode:
+    build: mcnode/
+    ports:
+      - 9002
+      - 9000
+    networks:
+      main:
+        aliases:
+          - mcnode
+  mcclient:
+    build: mcclient/
+    depends_on:
+      - mcnode
+    networks:
+      main:
+        aliases:
+          - mcclient
+networks:
+  main:
